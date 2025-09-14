@@ -12,7 +12,6 @@ public class SoftwareEngineerController {
 
     public SoftwareEngineerController(SoftwareEngineerService softwareEngineerService) {
         this.softwareEngineerService = softwareEngineerService;
-
     }
 
     @GetMapping
