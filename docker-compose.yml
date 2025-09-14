@@ -13,5 +13,18 @@ services:
       - ./mysql-data:/var/lib/mysql
     restart: always
 
+  app:
+    container_name: springboot-app
+    build:
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/springdocker
+    depends_on:
+      - db
+    restart: always
+
+
+
 volumes:
   mysql-data:
