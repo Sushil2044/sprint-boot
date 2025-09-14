@@ -1,7 +1,7 @@
 name: CICD
 on:
   push:
-    branches: deploy-to-ec2
+    branches: [deploy-to-ec2]
 
 jobs:
   build:
@@ -21,7 +21,7 @@ jobs:
       - name: Build docker image
         run: docker build -t integradtionnijnas/springboot-example .
       - name: Publish image to docker hub
-        run: docker pushintegradtionnijnas/springboot-example:latest
+        run: docker push integradtionnijnas/springboot-example:latest
 
   deploy:
     needs: build
