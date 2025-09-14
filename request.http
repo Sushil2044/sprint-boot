@@ -1,0 +1,47 @@
+### GET request to example server
+GET http://localhost:8080/
+
+###
+GET http://localhost:8080/api/v1/software-engineers
+
+###
+###
+GET http://localhost:8080/api/v1/software-engineers/1
+
+
+###
+POST http://localhost:8080/api/v1/software-engineers
+Content-Type: application/json
+
+{
+
+    "name": "Sushil subedi",
+    "techStack": "Java, spring boot, jasper report"
+}
+
+###
+GET http://localhost:8080//api/subjects
+
+###
+POST http://localhost:8080/api/subjects
+Content-Type: application/json
+
+{
+    "name": "Mathematics",
+    "description": "Math is my favorite subject"
+}
+
+###
+DELETE http://localhost:8080/api/subjects/4
+
+###
+GET http://localhost:8080/api/subjects/5
+
+###
+PUT http://localhost:8080/api/subjects/5
+Content-Type: application/json
+
+{
+    "name": "Physics",
+    "description": "Science is my favorite subject"
+}

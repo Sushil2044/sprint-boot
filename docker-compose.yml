@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: mysql-spring-boot
+    image: mysql:8.0
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes       # ✅ allows root with no password
+      - MYSQL_DATABASE=springdocker
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    restart: always
+
+volumes:
+  mysql-data:
