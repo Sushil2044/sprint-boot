@@ -15,7 +15,7 @@ services:
 
   app:
     container_name: springboot-app
-    build:
+    build: .
     ports:
       - 8080:8080
     environment:
