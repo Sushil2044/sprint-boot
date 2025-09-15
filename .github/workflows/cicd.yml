@@ -19,9 +19,9 @@ jobs:
       - name: Login to docker hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login --username "${{ secrets.DOCKER_USERNAME }}" --password-stdin
       - name: Build docker image
-        run: docker build -t integradtionnijnas/springboot-example .
+        run: docker build -t sushil2044/springboot-example:latest .
       - name: Publish image to docker hub
-        run: docker push integradtionnijnas/springboot-example:latest
+        run: docker push sushil2044/springboot-example:latest
 
   deploy:
     needs: build
