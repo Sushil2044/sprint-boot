@@ -27,6 +27,24 @@ jobs:
     needs: build
     runs-on: [self-hosted, linux, x64,aws-ec2]
     steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+      - name: Run MySQL Container (No Password)
+        run: |
+          docker rm -f mysql-container || true
+          docker run -d \
+            --name mysql-container \
+            -e MYSQL_ALLOW_EMPTY_PASSWORD=yes \
+            -e MYSQL_DATABASE=springdocker \
+            -p 3306:3306 \
+            mysql:8.0
+      - name: Wait for MySQL to be ready
+        run: |
+          echo "Waiting for MySQL to start..."
+          sleep 20
+          docker exec mysql-container mysql -uroot -e "CREATE USER IF NOT EXISTS 'springuser'@'%' IDENTIFIED BY '';"
+          docker exec mysql-container mysql -uroot -e "GRANT ALL PRIVILEGES ON springdocker.* TO 'springuser'@'%';"
+          docker exec mysql-container mysql -uroot -e "FLUSH PRIVILEGES;"
       - name: Pull Image from docker hub
         run: docker pull sushil2044/springboot-example:latest
       - name: Delete old container
